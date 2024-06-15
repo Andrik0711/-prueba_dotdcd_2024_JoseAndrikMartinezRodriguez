@@ -36,4 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $stmt->execute();
     $result = $stmt->get_result();
     $employee = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();
 }
