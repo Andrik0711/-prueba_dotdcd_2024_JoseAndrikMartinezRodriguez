@@ -3,43 +3,66 @@ require '../controller/detail.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detalles del Empleado</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
     <div class="container">
-        <h2 class="my-4">Información de Empleado</h2>
-        <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" name="name" value="<?php echo $employee['name']; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="phone">Teléfono</label>
-            <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $employee['phone']; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="email">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?php echo $employee['email']; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="birth_date">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="birth_date" name="birth_date" value="<?php echo $employee['birth_date']; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="rfc">RFC</label>
-            <input type="text" class="form-control" id="rfc" name="rfc" value="<?php echo $employee['rfc']; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="user_type">Tipo de Usuario</label>
-            <input type="text" class="form-control" id="user_type" name="user_type" value="<?php echo $employee['user_type']; ?>" readonly>
-        </div>
+        <h2 class="my-4">Detalles del Empleado</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <td><?php echo $employee['id']; ?></td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td><?php echo $employee['name']; ?></td>
+            </tr>
+            <tr>
+                <th>Teléfono</th>
+                <td><?php echo $employee['phone']; ?></td>
+            </tr>
+            <tr>
+                <th>Correo Electrónico</th>
+                <td><?php echo $employee['email']; ?></td>
+            </tr>
+            <tr>
+                <th>Fecha de Nacimiento</th>
+                <td><?php echo $employee['birth_date']; ?></td>
+            </tr>
+            <tr>
+                <th>RFC</th>
+                <td><?php echo $employee['rfc']; ?></td>
+            </tr>
+            <tr>
+                <th>Tipo de Usuario</th>
+                <td><?php echo $employee['user_type']; ?></td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td><?php echo $employee['status']; ?></td>
+            </tr>
+            <tr>
+                <th>Fecha de Creación</th>
+                <td><?php echo $employee['created_at']; ?></td>
+            </tr>
+            <tr>
+                <th>Última Actualización</th>
+                <td><?php echo $employee['updated_at']; ?></td>
+            </tr>
+        </table>
+        <a href="index.php" class="btn btn-primary">Volver</a>
     </div>
 </body>
 
 </html>
+
+<?php
+$stmt->close();
+$conn->close();
+?>
