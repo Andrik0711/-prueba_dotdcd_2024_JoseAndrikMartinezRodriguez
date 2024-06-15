@@ -17,4 +17,3 @@ function conexion()
     //  echo "Conexión exitosa";
     return $conn;
 }
-?>
