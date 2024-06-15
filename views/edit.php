@@ -8,7 +8,7 @@ require '../controller/edit.php';
 <head>
     <meta charset="UTF-8">
     <title>Editar Empleado</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
@@ -50,4 +50,3 @@ require '../controller/edit.php';
 </body>
 
 </html>
-
