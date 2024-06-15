@@ -36,12 +36,21 @@ require '../controller/index.php';
                         <td>
                             <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
                             <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
-                            <a href="detail.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">Detalles</a>
+                            <a href="details.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">Detalles</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                    <li class="page-item <?php if ($page == $i) echo 'active'; ?>">
+                        <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                    </li>
+                <?php endfor; ?>
+            </ul>
+        </nav>
     </div>
 </body>
 
