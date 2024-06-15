@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h2 class="my-4">Login de Empleado</h2>
-        <form action="login.php" method="post">
+        <form action="../controller/login.php" method="post">
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
                 <input type="email" class="form-control" id="email" name="email" required>

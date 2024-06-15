@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $id;
             $_SESSION['user_name'] = $name;
             $_SESSION['user_type'] = $user_type;
-            header("Location: dashboard.php");
+            header("Location: ../views/dashboard.php");
         } else {
             echo "Contraseña incorrecta.";
         }
