@@ -26,7 +26,7 @@ $user_type = $_SESSION['user_type'];
                 <h1 class="text-center">Bienvenido, <?php echo htmlspecialchars($user_name); ?>!</h1>
                 <p class="text-center">Rol: <?php echo htmlspecialchars($user_type); ?></p>
                 <div class="text-center mt-4">
-                    <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
+                    <a href="../controller/logout.php" class="btn btn-danger">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
