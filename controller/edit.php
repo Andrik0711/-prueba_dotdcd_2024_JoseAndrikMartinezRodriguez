@@ -4,7 +4,7 @@ $conn = conexion();
 
 // Verificar si hay una sesión iniciada y si el usuario es admin
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] != 'admin') {
-    header("Location: ../views/index.php");
+    header("Location: ../views/index.php?error");
     exit();
 }
 
@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Información del empleado actualizada con éxito.";
-        header("Location: ../views/index.php");
+        header("Location: ../views/index.php?success");
         exit();
     } else {
-        header("Location: ../views/index.php?error=update");
+        header("Location: ../views/index.php?error");
         exit();
     }
 
@@ -45,13 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!$employee) {
         // Si no se encuentra el empleado, redirigir al index
-        header("Location: ../views/index.php");
+        header("Location: ../views/index.php?error");
         exit();
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../views/index.php");
+    header("Location: ../views/index.php?error");
     exit();
 }

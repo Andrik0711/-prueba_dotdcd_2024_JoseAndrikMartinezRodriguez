@@ -9,6 +9,8 @@ require '../controller/index.php';
     <meta charset="UTF-8">
     <title>Gestión de Empleados</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -55,7 +57,7 @@ require '../controller/index.php';
                         <td>
                             <?php if ($user_type == 'admin') : ?>
                                 <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                                <a href="#" class="btn btn-danger btn-sm delete-btn" data-id="<?php echo $row['id']; ?>">Eliminar</a>
                             <?php endif; ?>
                             <a href="detail.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">Detalles</a>
                         </td>
@@ -81,5 +83,53 @@ require '../controller/index.php';
         <a href="dashboard.php" class="btn btn-primary">Volver al Dashboard</a>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            swal({
+                title: "¡Buen trabajo!",
+                text: "¡Proceso realizado correctamente!",
+                icon: "success",
+                button: "OK",
+            });
+        } else if (urlParams.has('error')) {
+            swal({
+                title: "¡Error!",
+                text: "Hubo un problema.",
+                icon: "error",
+                button: "OK",
+            });
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const id = this.getAttribute('data-id');
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: 'Una vez eliminado, no podrás recuperar este registro.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminarlo',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirigir a delete.php con el ID del registro a eliminar
+                        window.location.href = 'delete.php?id=' + id;
+                    }
+                });
+            });
+        });
+    });
+</script>
 
 </html>

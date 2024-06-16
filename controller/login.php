@@ -30,17 +30,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $id;
                 $_SESSION['user_name'] = $name;
                 $_SESSION['user_type'] = $user_type;
-                header("Location: ../views/dashboard.php?login=success");
+                header("Location: ../views/dashboard.php?success");
             } else {
-                header("Location: ../views/dashboard.php?login=error");
+                header("Location: ../views/dashboard.php?error");
                 exit();
             }
         } else {
-            header("Location: ../views/dashboard.php?login=error");
+            header("Location: ../views/dashboard.php?error");
             exit();
         }
     } else {
-        header("Location: ../views/dashboard.php?login=error");
+        header("Location: ../views/dashboard.php?error");
         exit();
     }
 

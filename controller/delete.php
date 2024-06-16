@@ -15,10 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if ($stmt->execute()) {
         echo "Empleado eliminado con éxito.";
-        header("Location: ../views/index.php");
+        header("Location: ../views/index.php?success");
     } else {
         echo "Error al eliminar el empleado.";
-        header("Location: ../views/index.php?error=delete");
+        header("Location: ../views/index.php?error");
+        exit();
     }
 
     $stmt->close();

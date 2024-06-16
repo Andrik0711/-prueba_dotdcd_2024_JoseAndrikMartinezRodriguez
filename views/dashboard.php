@@ -13,6 +13,7 @@ $user_type = $_SESSION['user_type'];
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -38,7 +39,7 @@ $user_type = $_SESSION['user_type'];
                             <a href="index.php" class="btn btn-primary">Ir</a>
                         </div>
                     </div>
-                </div>  
+                </div>
                 <!-- Rol de empleados -->
             <?php elseif ($user_type == 'employee') : ?>
                 <div class="col-md-4">
@@ -65,5 +66,26 @@ $user_type = $_SESSION['user_type'];
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            swal({
+                title: "¡Buen trabajo!",
+                text: "Registro exitoso!",
+                icon: "success",
+                button: "OK",
+            });
+        } else if (urlParams.has('error')) {
+            swal({
+                title: "¡Error!",
+                text: "Hubo un problema con el registro.",
+                icon: "error",
+                button: "OK",
+            });
+        }
+    });
+</script>
 
 </html>

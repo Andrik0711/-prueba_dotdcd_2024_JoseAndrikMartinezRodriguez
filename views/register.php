@@ -10,6 +10,7 @@ sesionStart();
   <meta charset="UTF-8" />
   <title>Registro de Empleado</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -53,6 +54,27 @@ sesionStart();
       <a href="index.php" class="btn btn-primary">Volver</a>
     </form>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            swal({
+                title: "¡Buen trabajo!",
+                text: "¡Proceso realizado correctamente!",
+                icon: "success",
+                button: "OK",
+            });
+        } else if (urlParams.has('error')) {
+            swal({
+                title: "¡Error!",
+                text: "Hubo un problema.",
+                icon: "error",
+                button: "OK",
+            });
+        }
+    });
+</script>
 </body>
 
 </html>
