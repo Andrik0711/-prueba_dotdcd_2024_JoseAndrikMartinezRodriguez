@@ -13,6 +13,22 @@ require '../controller/index.php';
 
 <body>
     <div class="container">
+        <?php if ($user_type == 'admin') : ?>
+            <div class="search_container">
+                <h2 class="my-2">Búsqueda de Empleados</h2>
+                <div class="form_container d-flex">
+                    <form action="index.php" method="post">
+                        <div class="form-group">
+                            <label for="search_term" class="my-2">Buscar:</label>
+                            <input type="text" class="form-control my-4" id="search_term" name="search_term" placeholder="Nombre o Correo">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button type="submit" class="search_all btn btn-primary">Mostrar todo</button>
+                    </form>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <h2 class="my-4">Lista de Empleados</h2>
         <table class="table table-bordered">
             <thead>
