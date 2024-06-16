@@ -67,7 +67,3 @@ require '../controller/detail.php';
 
 </html>
 
-<?php
-$stmt->close();
-$conn->close();
-?>

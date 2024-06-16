@@ -1,7 +1,7 @@
     <?php
     require 'conexion.php';
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION['user_type'] == 'admin') {
         $name = $_POST['name'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
@@ -24,4 +24,6 @@
 
         $stmt->close();
         $conn->close();
+    }else {
+        header("Location: ../views/index.php");
     }

@@ -3,7 +3,7 @@ require 'conexion.php';
 $conn = conexion();
 
 // Si es POST se actualiza la información del empleado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION['user_type'] == 'admin') {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $phone = $_POST['phone'];
@@ -25,10 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
     $conn->close();
+} else {
+    header("Location: ../views/index.php");
 }
 
 // Si es GET se obtiene la información del empleado
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] == "GET" && $_SESSION['user_type'] == 'admin') {
     $id = $_GET['id'];
     $sql = "SELECT * FROM employees WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -38,4 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $employee = $result->fetch_assoc();
     $stmt->close();
     $conn->close();
+} else {
+    header("Location: ../views/index.php");
 }
