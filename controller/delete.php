@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "Empleado eliminado con éxito.";
         header("Location: ../views/index.php");
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error al eliminar el empleado.";
+        header("Location: ../views/index.php?error=delete");
     }
 
     $stmt->close();

@@ -30,15 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $id;
                 $_SESSION['user_name'] = $name;
                 $_SESSION['user_type'] = $user_type;
-                header("Location: ../views/dashboard.php");
+                header("Location: ../views/dashboard.php?login=success");
             } else {
-                echo "Contraseña incorrecta.";
+                header("Location: ../views/dashboard.php?login=error");
+                exit();
             }
         } else {
-            echo "Usuario inactivo.";
+            header("Location: ../views/dashboard.php?login=error");
+            exit();
         }
     } else {
-        echo "No se encontró una cuenta con ese correo electrónico.";
+        header("Location: ../views/dashboard.php?login=error");
+        exit();
     }
 
     $stmt->close();

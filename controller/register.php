@@ -22,21 +22,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             // Redirigir a la página de éxito
-            header("Location: ../views/index.php");
+            header("Location: ../views/index.php?success=register");
             exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            // Redirigir a la página de error
+            header("Location: ../views/index.php?error=register");
+            exit();
         }
 
         $stmt->close();
         $conn->close();
     } else {
         // Redirigir si no es administrador
-        header("Location: ../views/index.php");
+        header("Location: ../views/index.php?error=register");
         exit();
     }
 } else {
     // Redirigir si el método de la solicitud no es POST
-    header("Location: ../views/index.php");
+    header("Location: ../views/index.php?error=register");
     exit();
 }

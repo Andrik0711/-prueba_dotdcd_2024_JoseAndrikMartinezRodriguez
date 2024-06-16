@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../views/index.php");
         exit();
     } else {
-        echo "Error al actualizar la información del empleado: " . $conn->error;
+        header("Location: ../views/index.php?error=update");
+        exit();
     }
 
     $stmt->close();
