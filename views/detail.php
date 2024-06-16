@@ -1,4 +1,7 @@
 <?php
+require '../controller/session.php';
+sesionStart();
+
 require '../controller/detail.php';
 ?>
 

@@ -1,3 +1,8 @@
+<?php
+require '../controller/session.php';
+sesionStart();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
