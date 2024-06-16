@@ -2,8 +2,14 @@
 require 'conexion.php';
 $conn = conexion();
 
+// Verificar si hay una sesión iniciada y si el usuario es admin
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] != 'admin') {
+    header("Location: ../views/index.php");
+    exit();
+}
+
 // Si es POST se actualiza la información del empleado
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION['user_type'] == 'admin') {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $phone = $_POST['phone'];
@@ -19,18 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION['user_type'] == 'admin') {
     if ($stmt->execute()) {
         echo "Información del empleado actualizada con éxito.";
         header("Location: ../views/index.php");
+        exit();
     } else {
         echo "Error al actualizar la información del empleado: " . $conn->error;
     }
 
     $stmt->close();
     $conn->close();
-} else {
-    header("Location: ../views/index.php");
-}
-
-// Si es GET se obtiene la información del empleado
-if ($_SERVER["REQUEST_METHOD"] == "GET" && $_SESSION['user_type'] == 'admin') {
+} elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
+    // Si es GET se obtiene la información del empleado
     $id = $_GET['id'];
     $sql = "SELECT * FROM employees WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -38,8 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $_SESSION['user_type'] == 'admin') {
     $stmt->execute();
     $result = $stmt->get_result();
     $employee = $result->fetch_assoc();
+
+    if (!$employee) {
+        // Si no se encuentra el empleado, redirigir al index
+        header("Location: ../views/index.php");
+        exit();
+    }
+
     $stmt->close();
     $conn->close();
 } else {
     header("Location: ../views/index.php");
+    exit();
 }
