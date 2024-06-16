@@ -21,11 +21,11 @@ require '../controller/edit.php';
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($employee['id']); ?>">
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($employee['name']); ?>" required>
+                <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($employee['name']); ?>" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras y espacios" required>
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="<?php echo htmlspecialchars($employee['phone']); ?>" required>
+                <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo htmlspecialchars($employee['phone']); ?>" pattern="[0-9]{10}" title="Ingrese un número de teléfono válido de 10 dígitos" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Correo Electrónico</label>
@@ -37,7 +37,7 @@ require '../controller/edit.php';
             </div>
             <div class="mb-3">
                 <label for="rfc" class="form-label">RFC</label>
-                <input type="text" class="form-control" id="rfc" name="rfc" value="<?php echo htmlspecialchars($employee['rfc']); ?>" required>
+                <input type="text" class="form-control" id="rfc" name="rfc" value="<?php echo htmlspecialchars($employee['rfc']); ?>" pattern="[A-Za-z0-9]{10}" title="El RFC debe tener 10 caracteres alfanuméricos" required>
             </div>
             <div class="mb-3">
                 <label for="user_type" class="form-label">Tipo de Usuario</label>
@@ -50,6 +50,7 @@ require '../controller/edit.php';
             <button type="submit" class="btn btn-primary">Actualizar</button>
             <a href="index.php" class="btn btn-secondary">Volver</a>
         </form>
+
     </div>
 </body>
 

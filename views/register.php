@@ -19,11 +19,11 @@ sesionStart();
     <form action="../controller/register.php" method="post">
       <div class="form-group">
         <label for="name">Nombre</label>
-        <input type="text" class="form-control" id="name" name="name" required />
+        <input type="text" class="form-control" id="name" name="name" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras y espacios" required />
       </div>
       <div class="form-group">
         <label for="phone">Teléfono</label>
-        <input type="text" class="form-control" id="phone" name="phone" required />
+        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" title="Ingrese un número de teléfono válido de 10 dígitos" required />
       </div>
       <div class="form-group">
         <label for="email">Correo Electrónico</label>
@@ -39,7 +39,7 @@ sesionStart();
       </div>
       <div class="form-group">
         <label for="rfc">RFC</label>
-        <input type="text" class="form-control" id="rfc" name="rfc" required />
+        <input type="text" class="form-control" id="rfc" name="rfc" pattern="[A-Za-z0-9]{10}" title="El RFC debe tener 10 caracteres alfanuméricos" required />
       </div>
       <div class="form-group">
         <label for="user_type">Tipo de Usuario</label>
@@ -53,28 +53,29 @@ sesionStart();
       <!-- btn de volver -->
       <a href="index.php" class="btn btn-primary">Volver</a>
     </form>
+
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('success')) {
-            swal({
-                title: "¡Buen trabajo!",
-                text: "¡Proceso realizado correctamente!",
-                icon: "success",
-                button: "OK",
-            });
-        } else if (urlParams.has('error')) {
-            swal({
-                title: "¡Error!",
-                text: "Hubo un problema.",
-                icon: "error",
-                button: "OK",
-            });
-        }
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('success')) {
+        swal({
+          title: "¡Buen trabajo!",
+          text: "¡Proceso realizado correctamente!",
+          icon: "success",
+          button: "OK",
+        });
+      } else if (urlParams.has('error')) {
+        swal({
+          title: "¡Error!",
+          text: "Hubo un problema.",
+          icon: "error",
+          button: "OK",
+        });
+      }
     });
-</script>
+  </script>
 </body>
 
 </html>

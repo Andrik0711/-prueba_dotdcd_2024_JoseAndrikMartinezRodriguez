@@ -5,7 +5,7 @@ sesionStart();
 require 'conexion.php';
 $conn = conexion();
 
-$limit = 1; // Número de registros por página
+$limit = 5; // Número de registros por página
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
