@@ -45,8 +45,15 @@ require '../controller/edit.php';
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
+
+
+            <!-- Btn de volver al index -->
+            <a href="index.php" class="btn btn-primary">Volver</a>
         </form>
+
+
     </div>
+
 </body>
 
 </html>
