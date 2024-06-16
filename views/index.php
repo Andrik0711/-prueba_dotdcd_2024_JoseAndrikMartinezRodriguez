@@ -24,6 +24,9 @@ require '../controller/index.php';
                         </div>
                         <button type="submit" class="btn btn-primary">Buscar</button>
                         <button type="submit" class="search_all btn btn-primary">Mostrar todo</button>
+
+                        <!-- Btn de registrar -->
+                        <a href="register.php" class="btn btn-primary">Registrar Empleado</a>
                     </form>
                 </div>
             </div>

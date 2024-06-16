@@ -44,6 +44,8 @@
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Registrar</button>
+      <!-- btn de volver -->
+      <a href="index.php" class="btn btn-primary">Volver</a>
     </form>
   </div>
 </body>

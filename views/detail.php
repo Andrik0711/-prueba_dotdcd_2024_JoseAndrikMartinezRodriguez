@@ -57,8 +57,6 @@ require '../controller/detail.php';
             </tr>
         </table>
         <a href="index.php" class="btn btn-primary">Volver</a>
-        <!-- Btn de volver al index -->
-        <a href="index.php" class="btn btn-primary">Volver</a>
     </div>
 
 
