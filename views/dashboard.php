@@ -1,10 +1,6 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
+require '../controller/session.php';
+sesionStart();
 
 $user_name = $_SESSION['user_name'];
 $user_type = $_SESSION['user_type'];
@@ -28,6 +24,7 @@ $user_type = $_SESSION['user_type'];
                 <div class="text-center mt-4">
                     <a href="../controller/logout.php" class="btn btn-danger">Cerrar Sesión</a>
                 </div>
+
             </div>
         </div>
         <!-- Rol de admin -->
@@ -38,7 +35,7 @@ $user_type = $_SESSION['user_type'];
                         <div class="card-body">
                             <h5 class="card-title">Administrar Empleados</h5>
                             <p class="card-text">Gestiona la lista de empleados.</p>
-                            <a href="manage_employees.php" class="btn btn-primary">Ir</a>
+                            <a href="index.php" class="btn btn-primary">Ir</a>
                         </div>
                     </div>
                 </div>  
@@ -49,7 +46,7 @@ $user_type = $_SESSION['user_type'];
                         <div class="card-body">
                             <h5 class="card-title">Mi Información</h5>
                             <p class="card-text">Visualiza y actualiza tu información personal.</p>
-                            <a href="my_info.php" class="btn btn-primary">Ir</a>
+                            <a href="index.php" class="btn btn-primary">Ir</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +57,7 @@ $user_type = $_SESSION['user_type'];
                         <div class="card-body">
                             <h5 class="card-title">Gestión de Ventas</h5>
                             <p class="card-text">Gestiona tus ventas y visualiza el rendimiento.</p>
-                            <a href="sales_management.php" class="btn btn-primary">Ir</a>
+                            <a href="index.php" class="btn btn-primary">Ir</a>
                         </div>
                     </div>
                 </div>
